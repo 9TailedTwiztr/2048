@@ -3,7 +3,7 @@
     <head>
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>2048</title>
+        <title>Two Thousand and Forty Eight</title>
         <link rel="stylesheet" href="style.css">
         <script type="text/javascript" src="game.js"></script>
         <script type="text/javascript" src="main.js"></script>
@@ -12,8 +12,17 @@
         <h1>2048</h1>
         <hr>
         <h2>Score: <span id="score">0</span></h2>
-        <div id="board">
+        <div id="board" >
         </div>
+        <div id="MobileButtons" class="mobile-buttons";>
+            <div >
+            <button onclick="slideUp()">UP</button><br><br>
+            <button onclick="slideDown()">DOWN</button>
+            <button onclick="slideLeft()">LEFT</button><br><br>
+            <button onclick="slideRight()">RIGHT</button>
+            </div>
+        </div>
+        <hr>
         Use arrow keys to move the tiles.
         <br>
         If you move a tile into another tile with the same value, they will be multiplied.
@@ -21,6 +30,11 @@
         The game ends when the board is full.
         <br>
         Good luck!
+        
+        
+        </div>
+
+        
     </body> 
 
 </html>
