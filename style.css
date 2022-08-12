@@ -53,7 +53,7 @@ button {
 /*rudimentary phone detection */
 .mobile-buttons {display: none}
 @media only screen  
-and (max-width: 834px){ .mobile-buttons {display: inline;}}
+and (max-width: 834px){ body{zoom: 0.8; zoom: 80%; } .mobile-buttons {display: inline;}}
 
 /*Tile setups */
 .tile {
