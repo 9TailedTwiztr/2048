@@ -31,13 +31,14 @@ function setGame() {
             document.getElementById("board").append(tile);
         }
     }
-    //create 2 to begin the game
     setTwo();
     setTwo();
 
 }
-function endGameAlert() {
+function endGame() {
     alert("Game Over \nYou scored " + score);
+    location.reload()
+    
 }
 
 function hasEmptyTile() {
@@ -50,10 +51,13 @@ function hasEmptyTile() {
     }
     return false;
 }
-
+function sendOverlay() {
+    var x = document.getElementById("overlay").style.display = "block";
+}
 function setTwo() {
     if (!hasEmptyTile()) {
-        endGameAlert()
+        endGame()
+        //window.location.href = "/endofgame.html";
         return;
     }
     let found = false;
@@ -84,6 +88,20 @@ function updateTile(tile, num) {
     }
 }
 
+window.addEventListener(
+    "keydown",
+    (e) => {
+    if (
+        ["Space", "ArrowUp", "ArrowDown", "ArrowLeft", "ArrowRight"].includes(
+        e.code
+        )
+    ) {
+        e.preventDefault();
+    }
+    },
+    false
+);
+
 document.addEventListener('keyup', (e) => {
     if (e.code == "ArrowLeft") {
         slideLeft();
@@ -98,11 +116,13 @@ document.addEventListener('keyup', (e) => {
         setTwo();
     }
     else if (e.code == "ArrowDown") {
-        slideDown();
+        slideUp();
         setTwo();
     }
     document.getElementById("score").innerText = score;
 })
+
+
 
 function filterZero(row){
     return row.filter(num => num != 0); 
@@ -180,3 +200,56 @@ function slideDown() {
 
     }
 }
+
+/*swipe detection*/
+document.addEventListener('touchstart', handleTouchStart, false);        
+document.addEventListener('touchmove', handleTouchMove, false);
+
+var xDown = null;                                                        
+var yDown = null;
+
+function getTouches(evt) {
+  return evt.touches ||             // browser API
+         evt.originalEvent.touches; // jQuery
+}
+
+function handleTouchStart(evt) {
+    const firstTouch = getTouches(evt)[0];                                      
+    xDown = firstTouch.clientX;                                      
+    yDown = firstTouch.clientY;                                      
+}; 
+
+function handleTouchMove(evt) {
+    if ( ! xDown || ! yDown ) {
+        return;
+    }
+
+    var xUp = evt.touches[0].clientX;                                    
+    var yUp = evt.touches[0].clientY;
+
+    var xDiff = xDown - xUp;
+    var yDiff = yDown - yUp;
+    
+    if ( Math.abs( xDiff ) > Math.abs( yDiff ) ) {/*most significant*/
+        if ( xDiff > 0 ) {
+            slideLeft();
+            setTwo(); 
+        } else {
+            slideRight();
+            setTwo();
+        }                       
+    } else {
+        if ( yDiff > 0 ) {
+            slideUp();
+            setTwo();
+        } else { 
+            slideDown();
+            setTwo();
+        }                                                                 
+    }document.getElementById("score").innerText = score;
+    /* reset values */
+    xDown = null;
+    yDown = null;                                             
+};
+
+
