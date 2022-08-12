@@ -9,19 +9,32 @@
         <script type="text/javascript" src="main.js"></script>
     </head>
     <body>
+        <!-- <div id="overlay">test</div> -->
         <h1>2048</h1>
-        <hr>
-        <h2>Score: <span id="score">0</span></h2>
-        <div id="board" >
+        <div id="heading">
+        Join matching tiles and reach 2048! <span button id="new-game" onclick="location.reload()">New game</button></span>
         </div>
-        <div id="MobileButtons" class="mobile-buttons";>
-            <div >
-            <button onclick="slideUp(), setTwo()">UP</button><br><br>
-            <button onclick="slideLeft(), setTwo()">LEFT</button>
-            <button onclick="slideRight(), setTwo()">RIGHT</button><br><br>
-            <button onclick="slideDown(), setTwo()">DOWN</button>
+        <hr>
+        <br>
+        <div id="Score-containers">
+            <div id="score-container">
+            Score: <span id="score">0</span>
+            </div>
+            <div id="best-container">
+            Best: <span id="best">0</span>
             </div>
         </div>
+        <br>
+        <div id="board" >
+        </div>
+        <!-- <div id="MobileButtons" class="mobile-buttons";>
+            <div >
+            <button class="UP-Arrow" onclick="slideUp(), setTwo(), score()">UP</button><br><br>
+            <button id="LEFT-Arrow" onclick="slideLeft(), setTwo(), score()">LEFT</button>
+            <button id="RIGHT-Arrow" onclick="slideRight(), setTwo(), score()">RIGHT</button><br><br>
+            <button id="DOWN-Arrow" onclick="slideDown(), setTwo(), score()">DOWN</button>
+            </div>
+        </div> -->
         <hr>
         Use arrow keys to move the tiles.
         <br>
@@ -38,3 +51,11 @@
     </body> 
 
 </html>
+
+<!-- TODO: Make score and best inline ./
+TODO: Add Images to buttons for movement
+TODO: Make board and tile resize for phones
+TODO: Disable movement at endgame or display popup iframe
+TODO: Make best access local storage to save best score
+TODO: Determine if device is touchscreen and enable buttons ./ Added swipe instead
+TODO: -->
