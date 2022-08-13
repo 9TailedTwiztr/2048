@@ -24,7 +24,6 @@ hr {
     flex-wrap: wrap;
 }
 #best-container, #score-container {
-    width:100px;
     font-size: 25px;
     display: inline;
     background-color: #f3b965;
@@ -111,7 +110,7 @@ and (max-width: 834px){ body{zoom: 0.8; zoom: 80%; } .mobile-buttons {display: i
     color: white;
 }
 
-/* #overlay {
+#overlay {
     text-align: center;
     position: fixed; 
     display: none; 
@@ -124,4 +123,4 @@ and (max-width: 834px){ body{zoom: 0.8; zoom: 80%; } .mobile-buttons {display: i
     background-color: rgba(52, 53, 52, 0.623); 
     z-index: 2;
     cursor: pointer; 
-} */
+}
