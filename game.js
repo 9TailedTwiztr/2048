@@ -5,7 +5,7 @@ var columns = 4;
 
 window.onload = function() {
     setGame();
-}
+
 
 function setGame() {
     // board = [
@@ -56,8 +56,7 @@ function sendOverlay() {
 }
 function setTwo() {
     if (!hasEmptyTile()) {
-        endGame()
-        //window.location.href = "/endofgame.html";
+        document.getElementById("overlay").style.display = "block";
         return;
     }
     let found = false;
@@ -88,9 +87,7 @@ function updateTile(tile, num) {
     }
 }
 
-window.addEventListener(
-    "keydown",
-    (e) => {
+window.addEventListener("keydown", (e) => {
     if (
         ["Space", "ArrowUp", "ArrowDown", "ArrowLeft", "ArrowRight"].includes(
         e.code
@@ -116,11 +113,12 @@ document.addEventListener('keyup', (e) => {
         setTwo();
     }
     else if (e.code == "ArrowDown") {
-        slideUp();
+        slideDown();
         setTwo();
     }
     document.getElementById("score").innerText = score;
 })
+
 
 
 
@@ -145,6 +143,7 @@ function slide(row) {
 }
 
 function slideLeft() {
+    if (hasEmptyTile()) {
     for (let r = 0; r < rows; r++) {
         let row = board[r];
         row = slide(row);
@@ -156,8 +155,10 @@ function slideLeft() {
         }
     }
 }
+}
 
 function slideRight() {
+    if (hasEmptyTile()) {
     for (let r = 0; r < rows; r++) {
         let row = board[r];      
         row.reverse();              
@@ -170,8 +171,10 @@ function slideRight() {
         }
     }
 }
+}
 
 function slideUp() {
+    if (hasEmptyTile()) {
     for (let c = 0; c < columns; c++) {
         let row = [board[0][c], board[1][c], board[2][c], board[3][c]];
         row = slide(row)
@@ -183,9 +186,11 @@ function slideUp() {
         }
 
     }
+}
 }
 
 function slideDown() {
+    if (hasEmptyTile()) {
     for (let c = 0; c < columns; c++) {
         let row = [board[0][c], board[1][c], board[2][c], board[3][c]];
         row.reverse();
@@ -200,10 +205,13 @@ function slideDown() {
 
     }
 }
+}
 
 /*swipe detection*/
-document.addEventListener('touchstart', handleTouchStart, false);        
-document.addEventListener('touchmove', handleTouchMove, false);
+
+let swipearea = document.getElementById("board");
+swipearea.addEventListener('touchstart', handleTouchStart, false);        
+swipearea.addEventListener('touchmove', handleTouchMove, false);
 
 var xDown = null;                                                        
 var yDown = null;
@@ -251,5 +259,5 @@ function handleTouchMove(evt) {
     xDown = null;
     yDown = null;                                             
 };
-
+}
 
