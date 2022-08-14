@@ -51,12 +51,11 @@ function hasEmptyTile() {
     }
     return false;
 }
-function sendOverlay() {
-    var x = document.getElementById("overlay").style.display = "block";
-}
+
 function setTwo() {
     if (!hasEmptyTile()) {
-        document.getElementById("overlay").style.display = "block";
+        document.querySelector(".cover").style.display = "block";
+        document.querySelector(".endscore").innerText = score;
         return;
     }
     let found = false;
