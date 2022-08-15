@@ -1,9 +1,11 @@
 var board;
 var score = 0;
+var best = +localStorage.getItem("Best");
 var rows = 4;
 var columns = 4;
 
 window.onload = function() {
+    document.querySelector(".best").innerText = localStorage.getItem("Best");
     setGame();
 
 
@@ -35,6 +37,7 @@ function setGame() {
     setTwo();
 
 }
+
 function endGame() {
     alert("Game Over \nYou scored " + score);
     location.reload()
@@ -54,8 +57,12 @@ function hasEmptyTile() {
 
 function setTwo() {
     if (!hasEmptyTile()) {
+        if (score > parseInt(localStorage.getItem("Best"))) {
+            localStorage.setItem("Best", score);
+        }
         document.querySelector(".cover").style.display = "block";
         document.querySelector(".endscore").innerText = score;
+        document.querySelector(".best").innerText = localStorage.getItem("Best");
         return;
     }
     let found = false;
@@ -259,4 +266,6 @@ function handleTouchMove(evt) {
     yDown = null;                                             
 };
 }
+
+
 
