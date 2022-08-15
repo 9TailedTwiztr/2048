@@ -121,6 +121,7 @@ and (max-width: 834px){ body{zoom: 0.8; zoom: 80%; } .mobile-buttons {display: i
     background-color: rgba(52, 53, 52, 0.623); 
     z-index: 2;
     border-radius: 15px;
+    
 }
 #endscore{
     position: relative;
