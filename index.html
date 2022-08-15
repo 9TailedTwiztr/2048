@@ -11,7 +11,8 @@
     <body>
         <h1>2048</h1>
         <div id="heading">
-        Join matching tiles and reach 2048! <span button id="new-game" onclick="location.reload()">New game</button></span>
+        Join matching tiles and reach 2048! 
+        <span button id="new-game" onclick="location.reload()">New game</button></span>
         </div>
         <hr>
         <br>
@@ -20,16 +21,17 @@
             Score: <span id="score">0</span>
             </div>
             <div id="best-container">
-            Best: <span id="best">0</span>
+            Best: <span class="best">0</span>
             </div>
         </div>
         <br>
-        <div class="board-area"></div>
+        <div class="board-area">
             <div id="board" >
                 <div id="overlay" class="overlay">
                     <div class="overlay cover">
                         <div id="endscore">
                         You scored: <span class="endscore">0</span>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -61,9 +63,8 @@
 </html>
 
 <!-- // Make score and best inline ./
-TODO: Add Images to buttons for movement
-TODO: Make board and tile resize for phones
+? Make board and tile resize for phones
 // Disable movement at endgame ./
-TODO: Make best access local storage to save best score
+// Make best access local storage to save best score ./
 // Determine if device is touchscreen and enable buttons ./ Added swipe instead
 // Only activate swipe on board ./-->
